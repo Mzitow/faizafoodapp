@@ -17,17 +17,20 @@ public class CustomerLogin extends AppCompatActivity {
     EditText username, password;
     TextView register;
     Button signIn;
-    DBHelper db;
+    DBHelper DB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_login);
 
-        username = findViewById(R.id.et_username);
-        password = findViewById(R.id.et_password);
-        signIn = findViewById(R.id.button_signin);
+        username = findViewById(R.id.et_consumerloginusername);
+        password = findViewById(R.id.et_consumerloginpassword);
+        signIn = findViewById(R.id.button_consumersignin);
         register = findViewById(R.id.regeistertxt);
+
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,39 +41,53 @@ public class CustomerLogin extends AppCompatActivity {
             }
         });
 
-        String Name = username.getText().toString().trim();
-        String password = username.getText().toString().trim();
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
 
-//              Cursor res= db.getdata();
-//                StringBuffer buffer = new StringBuffer();
-//                while(res.moveToNext()){
-//                    buffer.append("Name :"+res.getString(0)+"\n");
-//                    buffer.append("password :"+res.getString(1)+"\n");
+                if(user.isEmpty() || pass.isEmpty() ){
+
+                    Toast toast = Toast.makeText(getApplicationContext(), "fill all the fields", Toast.LENGTH_SHORT);
+                    toast.show();
+                }else {
+                    UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+                    UserDao userDao = userDatabase.userDao();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            UserEntity userEntity = userDao.login(user,pass);
+                            if (userEntity == null){
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast toast = Toast.makeText(getApplicationContext(), "invalid Credentials ", Toast.LENGTH_SHORT);
+                                        toast.show();
+
+                                    }
+                                });
+
+                            } else {
+                                String titleName = userEntity.name;
+                                Intent intent = new Intent(CustomerLogin.this, ConsumerDashboard.class)
+                                        .putExtra("name",titleName);
+                                startActivity(intent);
+
+
+                            }
+
+
+                        }
+                    }).start();;
+                }
+
+
 //
-//                }
-                SharedPreferences sharedPreferences = getSharedPreferences("consumerSignup", Context.MODE_PRIVATE);
-                String namers = sharedPreferences.getString("Name", "default");
-                String passrs = sharedPreferences.getString("password", "default");
-
-
-                if (passrs.equals(password)   ){
-                    Intent intent = new Intent(CustomerLogin.this, ConsumerDashboard.class);
-                    startActivity(intent);
-                    Toast toast = Toast.makeText(CustomerLogin.this, "signup succces", Toast.LENGTH_SHORT);
-                    toast.show();
 
 
 
-                }
-                else {
-                    Toast toast = Toast.makeText(CustomerLogin.this, "please try again", Toast.LENGTH_SHORT);
-                    toast.show();
-
-                }
 
 
 

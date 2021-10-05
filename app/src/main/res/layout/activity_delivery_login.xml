@@ -7,9 +7,35 @@
     tools:context=".DeliveryLogin">
     <include
         android:id="@+id/delivery_toolbar"
-        layout="@layout/delivery_toolbar"
+        layout="@layout/top_menu"
 
         />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/delivery_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="144dp"
+            android:text="Consumer"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="23sp" />
+
+    </RelativeLayout>
+
+
+
 
 
     <LinearLayout
@@ -53,7 +79,7 @@
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_username"
+                    android:id="@+id/et_delilogusername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -88,7 +114,7 @@
                 app:passwordToggleEnabled="true">
 
                 <EditText
-                    android:id="@+id/et_password"
+                    android:id="@+id/et_delilogpassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -117,7 +143,7 @@
             android:text="@string/text_forgot_password" />
 
         <Button
-            android:id="@+id/button_signin"
+            android:id="@+id/button_deliverysignin"
             style="@style/Button1"
             android:layout_width="342dp"
             android:layout_height="wrap_content"

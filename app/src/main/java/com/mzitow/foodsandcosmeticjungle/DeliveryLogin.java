@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DeliveryLogin extends AppCompatActivity {
 
-    EditText username, passweord;
+    EditText deliusername, delipassweord;
+    TextView tittle;
     Button login;
 
     @Override
@@ -21,14 +23,60 @@ public class DeliveryLogin extends AppCompatActivity {
 
         login =  findViewById(R.id.button_signin);
 
+        deliusername = findViewById(R.id.et_delilogusername);
+        delipassweord = findViewById(R.id.et_delilogpassword);
+        tittle = findViewById(R.id.delivery_title);
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DeliveryLogin.this, DeliveryDashboard.class);
-                startActivity(intent);
+//                Intent intent = new Intent(DeliveryLogin.this, DeliveryDashboard.class);
+//                startActivity(intent);
+//
+//                Toast toast = Toast.makeText(DeliveryLogin.this, "signup succces", Toast.LENGTH_SHORT);
+//                toast.show();
+                String user = deliusername.getText().toString();
+                String pass = delipassweord.getText().toString();
 
-                Toast toast = Toast.makeText(DeliveryLogin.this, "signup succces", Toast.LENGTH_SHORT);
-                toast.show();
+
+
+                if(user.isEmpty() || pass.isEmpty() ){
+
+                    Toast toast = Toast.makeText(getApplicationContext(), "fill all the fields", Toast.LENGTH_SHORT);
+                    toast.show();
+                }else {
+                    UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+                    UserDao userDao = userDatabase.userDao();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            UserEntity userEntity = userDao.login(user,pass);
+                            if (userEntity == null){
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast toast = Toast.makeText(getApplicationContext(), "invalid Credentials ", Toast.LENGTH_SHORT);
+                                        toast.show();
+
+                                    }
+                                });
+
+                            } else {
+                                String titleName = userEntity.name;
+                                Intent intent = new Intent(getApplicationContext(), DeliveryDashboard.class)
+                                        .putExtra("name",titleName);
+                                startActivity(intent);
+
+
+                            }
+
+
+                        }
+                    }).start();;
+                }
+
+
+
             }
         });
 

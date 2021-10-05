@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".DeliveryDashboard">
 
+    <include
+        layout="@layout/top_menu"
+        />
+
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="You have no Orders at the momment "
+        android:textSize="24dp"
+        android:textColor="@color/black"
+
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
