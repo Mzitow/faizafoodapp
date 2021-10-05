@@ -21,17 +21,17 @@ public class ConsumerDashboard extends AppCompatActivity {
         food = findViewById(R.id.foodcard);
         cosmetics = findViewById(R.id.cosmeticcard);
         title = findViewById(R.id.consumercategory_title);
-        Toolbar toolbar = findViewById(R.id.toptool);
-
-       setActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toptool);
 //
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//       setActionBar(toolbar);
+////
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
 
-        String name = getIntent().getStringExtra("titleName");
-        title.setText(name);
+//        String name = getIntent().getStringExtra("titleName");
+//        title.setText(name);
 
         food.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,9 +49,9 @@ public class ConsumerDashboard extends AppCompatActivity {
         });
 
     }
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        onBackPressed();
+//        return true;
+
 }

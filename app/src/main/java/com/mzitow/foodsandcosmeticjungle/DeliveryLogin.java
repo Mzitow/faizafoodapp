@@ -13,19 +13,29 @@ import android.widget.Toast;
 public class DeliveryLogin extends AppCompatActivity {
 
     EditText deliusername, delipassweord;
-    TextView tittle;
+    TextView tittle , deliverysignupPage;
     Button login;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_login);
 
-        login =  findViewById(R.id.button_signin);
+        login =  findViewById(R.id.button_deliverysignin);
 
         deliusername = findViewById(R.id.et_delilogusername);
         delipassweord = findViewById(R.id.et_delilogpassword);
         tittle = findViewById(R.id.delivery_title);
+        deliverysignupPage = findViewById(R.id.delivery_sign_up_page);
+
+        deliverysignupPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ConsumerSignUp.class);
+                startActivity(intent);
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,8 +73,7 @@ public class DeliveryLogin extends AppCompatActivity {
 
                             } else {
                                 String titleName = userEntity.name;
-                                Intent intent = new Intent(getApplicationContext(), DeliveryDashboard.class)
-                                        .putExtra("name",titleName);
+                                Intent intent = new Intent(getApplicationContext(), DeliveryDashboard.class);
                                 startActivity(intent);
 
 

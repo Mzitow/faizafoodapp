@@ -17,7 +17,6 @@ public class CustomerLogin extends AppCompatActivity {
     EditText username, password;
     TextView register;
     Button signIn;
-    DBHelper DB;
 
 
     @Override
@@ -71,8 +70,7 @@ public class CustomerLogin extends AppCompatActivity {
 
                             } else {
                                 String titleName = userEntity.name;
-                                Intent intent = new Intent(CustomerLogin.this, ConsumerDashboard.class)
-                                        .putExtra("name",titleName);
+                                Intent intent = new Intent(getApplicationContext(), ConsumerDashboard.class);
                                 startActivity(intent);
 
 

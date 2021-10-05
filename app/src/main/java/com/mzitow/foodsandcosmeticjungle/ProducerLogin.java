@@ -7,21 +7,35 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ProducerLogin extends AppCompatActivity {
 
     Button login;
     EditText producerlogName, producerlogpass;
+    TextView producerSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producer_login);
 
-        login = findViewById(R.id.button_signin);
+        login = findViewById(R.id.button_producersignin);
         producerlogName = findViewById(R.id.et_producerlogusername);
         producerlogpass = findViewById(R.id.et_producerlogpassword);
+        producerSignUp = findViewById(R.id.producer_sign_up_page);
+
+        producerSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), ProducerSignUp.class);
+                startActivity(intent);
+
+            }
+        });
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,13 +54,14 @@ public class ProducerLogin extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(), "fill all the fields", Toast.LENGTH_SHORT);
                     toast.show();
                 }else {
-                    UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
-                    UserDao userDao = userDatabase.userDao();
+                   UserDatabase producerDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+                 UserDao producerDao = producerDatabase.userDao();
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            UserEntity userEntity = userDao.login(user,pass);
-                            if (userEntity == null){
+//                            UserEntity userEntity = userDao.login(user,pass);
+                           UserEntity producerEntity = producerDao.login(user, pass);
+                            if (producerEntity == null){
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -57,9 +72,8 @@ public class ProducerLogin extends AppCompatActivity {
                                 });
 
                             } else {
-                                String titleName = userEntity.name;
-                                Intent intent = new Intent(getApplicationContext(), ProducerDashboard.class)
-                                        .putExtra("name",titleName);
+                             //   String titleName = producerEntity.name;
+                                Intent intent = new Intent(getApplicationContext(), ProducerDashboard.class);
                                 startActivity(intent);
 
 

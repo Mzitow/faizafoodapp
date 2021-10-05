@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ProducerDashboard"
+    >
 
 
     <include layout="@layout/top_menu"
@@ -39,10 +41,13 @@
         android:layout_centerVertical="true">
 
         <androidx.cardview.widget.CardView
+
             android:layout_marginTop="20dp"
-            android:id="@+id/foodcard"
+            android:id="@+id/myproducts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+
             <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
@@ -69,7 +74,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="My Products "
+                    android:text="View My Products "
                     android:textColor="#000000"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -85,8 +90,8 @@
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:layout_below="@+id/foodcard"
-            android:id="@+id/cosmeticcard"
+            android:layout_below="@+id/myproducts"
+            android:id="@+id/addnewproducts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -116,7 +121,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="My Orders"
+                    android:text="Add New Products"
                     android:textColor="#000000"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -132,53 +137,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_below="@+id/cosmeticcard"
-            android:id="@+id/createorders"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="24dp">
 
-
-
-                <ImageView
-
-                    android:id="@+id/creatteorderscardphoto"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/cosmetic_pic"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="sans-serif-black"
-                    android:text="place new product"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/creatteorderscardphoto" />
-
-
-
-
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.cardview.widget.CardView>
 
 
 

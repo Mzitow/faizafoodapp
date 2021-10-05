@@ -22,7 +22,7 @@ public class ProducerSignUp extends AppCompatActivity {
         producerEmail = findViewById(R.id.et_produceremail);
         producerName = findViewById(R.id.et_producerusername);
         producerPass = findViewById(R.id.et_producerpassword);
-        producerPhone = findViewById(R.id.et_produceremail);
+        producerPhone = findViewById(R.id.et_producerphone);
 
 
         signup = findViewById(R.id.button_producersignup);
@@ -36,21 +36,22 @@ public class ProducerSignUp extends AppCompatActivity {
 //                Toast toast = Toast.makeText(ProducerSignUp.this, "signup succces", Toast.LENGTH_SHORT);
 //                toast.show();
 
-                UserEntity userEntity = new UserEntity();
-                userEntity.setName(producerName.getText().toString());
-                userEntity.setPassword(producerPass.getText().toString());
-                userEntity.setEmail(producerEmail.getText().toString());
-                userEntity.setPhone(producerPhone.getText().toString());
+                UserEntity producerEntity = new UserEntity();
+                producerEntity.setName(producerName.getText().toString());
+                producerEntity.setPassword(producerPass.getText().toString());
+                producerEntity.setEmail(producerEmail.getText().toString());
+                producerEntity.setPhone(producerPhone.getText().toString());
 
-                if (validateInput(userEntity)){
+                if (validateInput(producerEntity)){
 
-                    UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
-                    UserDao userDao =userDatabase.userDao();
+                  UserDatabase producerDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+                   UserDao producerDao = producerDatabase.userDao();
+                            //userDatabase.userDao();
 
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            userDao.registerUser(userEntity);
+//                            ProducerDao.r(producerEntity);
                             Toast toast = Toast.makeText(getApplicationContext(), "User Register successful", Toast.LENGTH_SHORT);
                             toast.show();
                             Intent intent = new Intent(getApplicationContext(), ProducerLogin.class);
@@ -68,8 +69,8 @@ public class ProducerSignUp extends AppCompatActivity {
             }
         });
     }
-    private  boolean validateInput(UserEntity userEntity){
-        if ( userEntity.getName().isEmpty() || userEntity.getPassword().isEmpty() || userEntity.getEmail().isEmpty() ||userEntity.getPhone().isEmpty() ){
+    private  boolean validateInput(UserEntity producerEntity){
+        if ( producerEntity.getName().isEmpty() || producerEntity.getPassword().isEmpty() || producerEntity.getEmail().isEmpty() ||producerEntity.getPhone().isEmpty() ){
             return false;
         }
 
