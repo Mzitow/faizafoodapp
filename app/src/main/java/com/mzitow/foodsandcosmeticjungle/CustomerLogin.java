@@ -1,17 +1,19 @@
 package com.mzitow.foodsandcosmeticjungle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mzitow.foodsandcosmeticjungle.database.UserDao;
+import com.mzitow.foodsandcosmeticjungle.database.UserDatabase;
+import com.mzitow.foodsandcosmeticjungle.database.UserEntity;
 
 public class CustomerLogin extends AppCompatActivity {
     EditText username, password;
@@ -23,6 +25,9 @@ public class CustomerLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_login);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Consumer Login");
 
         username = findViewById(R.id.et_consumerloginusername);
         password = findViewById(R.id.et_consumerloginpassword);
@@ -69,7 +74,7 @@ public class CustomerLogin extends AppCompatActivity {
                                 });
 
                             } else {
-                                String titleName = userEntity.name;
+//                                String titleName = userEntity.n;
                                 Intent intent = new Intent(getApplicationContext(), ConsumerDashboard.class);
                                 startActivity(intent);
 

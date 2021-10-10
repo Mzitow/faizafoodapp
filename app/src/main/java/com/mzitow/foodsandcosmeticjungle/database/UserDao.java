@@ -1,8 +1,10 @@
-package com.mzitow.foodsandcosmeticjungle;
+package com.mzitow.foodsandcosmeticjungle.database;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.mzitow.foodsandcosmeticjungle.database.UserEntity;
 
 @Dao
 public interface UserDao {

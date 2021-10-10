@@ -1,5 +1,6 @@
 package com.mzitow.foodsandcosmeticjungle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -18,25 +19,17 @@ public class ConsumerDashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consumer_dashboard);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Consumer Dashboard");
+
         food = findViewById(R.id.foodcard);
         cosmetics = findViewById(R.id.cosmeticcard);
-        title = findViewById(R.id.consumercategory_title);
-//        Toolbar toolbar = findViewById(R.id.toptool);
-//
-//       setActionBar(toolbar);
-////
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
-
-//        String name = getIntent().getStringExtra("titleName");
-//        title.setText(name);
 
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ConsumerDashboard.this, ConsumerCategory.class);
+                Intent intent = new Intent(ConsumerDashboard.this, CustomerFoodCatergory.class);
                 startActivity(intent);
             }
         });
@@ -49,9 +42,10 @@ public class ConsumerDashboard extends AppCompatActivity {
         });
 
     }
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        onBackPressed();
-//        return true;
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
 }

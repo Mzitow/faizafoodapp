@@ -6,27 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ProducerSignUp">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".SignupActivity">
-        <include
-            android:id="@+id/producer_toolbar"
-            layout="@layout/producer_toolbar"
-
-            />
 
 
         <ScrollView
-            android:layout_below="@id/producer_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:fillViewport="true"
             android:fitsSystemWindows="true"
+            android:orientation="vertical"
             tools:context="in.insideandroid.template.LoginActivity">
 
             <RelativeLayout
@@ -37,18 +33,18 @@
                 android:scrollbarThumbVertical="@null">
 
                 <LinearLayout
-                    android:layout_centerVertical="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:orientation="vertical">
 
                     <RelativeLayout
                         android:id="@+id/signup_image_layout"
-                        android:layout_gravity="center"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="8dp">
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/image"
@@ -56,33 +52,36 @@
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
                             android:src="@drawable/dummy_image" />
+
                         <ImageView
                             android:layout_width="32dp"
                             android:layout_height="32dp"
-                            android:layout_margin="1dp"
-                            android:layout_alignParentRight="true"
                             android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
                             android:layout_alignParentBottom="true"
+                            android:layout_margin="1dp"
                             android:src="@drawable/ic_plus" />
                     </RelativeLayout>
 
                     <TextView
-                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="16dp"
                         android:text="@string/text_signup_message"
                         android:textColor="#696969"
                         android:textSize="16sp"
-                        android:layout_marginBottom="16dp"
                         android:textStyle="bold" />
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        app:cardBackgroundColor="@color/colorTextInputBackground"
                         android:layout_margin="4dp"
+                        app:cardBackgroundColor="@color/colorTextInputBackground"
                         app:cardCornerRadius="24dp"
                         app:cardElevation="0dp">
+
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_produceremail"
                             android:layout_width="wrap_content"
@@ -95,8 +94,8 @@
                             android:drawableLeft="@drawable/ic_mail"
                             android:drawablePadding="12dp"
                             android:hint="@string/hint_email"
-                            android:inputType="textEmailAddress"
                             android:imeOptions="actionNext"
+                            android:inputType="textEmailAddress"
                             android:minWidth="320dp"
                             android:minHeight="45dp"
                             android:singleLine="true" />
@@ -135,6 +134,7 @@
                                 android:singleLine="true" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </androidx.cardview.widget.CardView>
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -168,6 +168,7 @@
                                 android:singleLine="true" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </androidx.cardview.widget.CardView>
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -214,16 +215,15 @@
                         android:text="@string/button_sign_up" />
 
 
-
                     <TextView
                         android:id="@+id/button_signup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:textSize="13sp"
                         android:padding="8dp"
-                        android:text="@string/text_signup_terms" />
+                        android:text="@string/text_signup_terms"
+                        android:textSize="13sp" />
                 </LinearLayout>
 
             </RelativeLayout>

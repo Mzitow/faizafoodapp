@@ -1,4 +1,4 @@
-package com.mzitow.foodsandcosmeticjungle;
+package com.mzitow.foodsandcosmeticjungle.database;
 
 
 import android.content.Context;
@@ -7,8 +7,16 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {UserEntity.class},version = 1)
+@Database(entities = {UserEntity.class, ProductEntity.class, CartEnity.class, FoodProductEntity.class, WhatsNewEntity.class, DeliveryDataEntity.class },  version = 4)
 public abstract class UserDatabase extends RoomDatabase {
+
+    public abstract UserDao userDao();
+    public abstract ProductsDao productsDao();
+    public abstract CartDao cartDao();
+    public abstract FoodProductDao foodProductDao();
+    public abstract WhatsNewDao whatsNewDao();
+    public abstract  DeliveryDao deliveryDao();
+
 
     private static final String dbName = "user";
     private static UserDatabase userDatabase;
@@ -18,6 +26,7 @@ public abstract class UserDatabase extends RoomDatabase {
         if(userDatabase == null){
 
             userDatabase = Room.databaseBuilder(context,UserDatabase.class,dbName)
+                    .allowMainThreadQueries()
                     .fallbackToDestructiveMigration()
                     .build();
 
@@ -25,7 +34,7 @@ public abstract class UserDatabase extends RoomDatabase {
         return userDatabase;
     }
 
-    public abstract UserDao userDao();
+
 
 
 

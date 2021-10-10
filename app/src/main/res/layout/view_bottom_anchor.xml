@@ -81,7 +81,7 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toLeftOf="@+id/checkout_envelop"
+            android:layout_toLeftOf="@+id/checkout"
             android:layout_toRightOf="@+id/item_counter"
             android:ellipsize="marquee"
             android:focusable="true"
@@ -95,34 +95,57 @@
             android:textColor="@android:color/background_dark"
             android:textSize="20sp" />
 
-        <FrameLayout
-            android:id="@+id/checkout_envelop"
+<!--
+   <TextView
+            android:id="@+id/checkout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:background="@drawable/checkout_button"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:freezesText="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:padding="5dp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="checkout"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+-->
 
-            <TextView
-                android:id="@+id/checkout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="5dp"
-                android:background="@drawable/checkout_button"
-                android:ellipsize="marquee"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:freezesText="true"
-                android:gravity="center"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:padding="5dp"
-                android:scrollHorizontally="true"
-                android:singleLine="true"
-                android:text="checkout"
-                android:textColor="@color/white"
-                android:textSize="15sp" />
-        </FrameLayout>
+        <Button
+            android:id="@+id/checkout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:background="@drawable/checkout_button"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:freezesText="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:padding="5dp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="checkout"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+
+            />
+
+
+
+
     </RelativeLayout>
 
 </LinearLayout>

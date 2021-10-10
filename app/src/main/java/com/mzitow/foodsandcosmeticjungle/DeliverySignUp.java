@@ -1,5 +1,6 @@
 package com.mzitow.foodsandcosmeticjungle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.mzitow.foodsandcosmeticjungle.database.UserDao;
+import com.mzitow.foodsandcosmeticjungle.database.UserDatabase;
+import com.mzitow.foodsandcosmeticjungle.database.UserEntity;
 
 public class DeliverySignUp extends AppCompatActivity {
 
@@ -18,6 +23,8 @@ public class DeliverySignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_sign_up);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Delivery Sign Up");
 
         delName = findViewById(R.id.et_deliveryusername);
         delpass = findViewById(R.id.et_deliverypassword);

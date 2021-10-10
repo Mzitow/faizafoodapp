@@ -3,8 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingBottom="24dp">
+    android:layout_height="match_parent"
+    tools:context=".ProductDiscription"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <include
+
+            layout="@layout/view_bottom_anchor"
+
+
+            />
+
+
+    </LinearLayout>
+
+
 
     <Button
         android:id="@+id/button_first"
@@ -18,7 +40,7 @@
         android:text="Add to cart"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodItemTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
     <ImageView
         android:id="@+id/mainPhoto"
@@ -43,6 +65,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainPhoto" />
 
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Short Description "
+        android:textSize="20dp"
+        android:textColor="@color/holo_green_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodItemTitle"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="20dp"
+
+
+        />
+
 
     <TextView
         android:id="@+id/foodPrice"
@@ -54,14 +91,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="$4.99" />
 
-    <ImageView
-        android:id="@+id/highlyRatedIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/button_first"
-        app:layout_constraintStart_toEndOf="@+id/button_first"
-        app:srcCompat="@drawable/highly_rated" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

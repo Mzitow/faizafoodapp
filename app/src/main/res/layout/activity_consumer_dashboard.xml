@@ -3,7 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ConsumerDashboard"
+
+    >
 
 
     <include layout="@layout/top_menu"
@@ -14,7 +17,8 @@
         android:layout_alignParentStart="true">
     </include>
 
-    <TextView
+    <!--
+      <TextView
         android:id="@+id/consumercategory_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,6 +31,9 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="23sp" />
+     -->
+
+
 
 
     <RelativeLayout
@@ -39,10 +46,14 @@
         android:layout_centerVertical="true">
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="20dp"
             android:id="@+id/foodcard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="27dp"
+            app:cardElevation="10dp"
+
+            >
             <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
@@ -85,10 +96,15 @@
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:layout_margin="20dp"
             android:layout_below="@+id/foodcard"
             android:id="@+id/cosmeticcard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="27dp"
+            app:cardElevation="10dp"
+
+            >
             <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"

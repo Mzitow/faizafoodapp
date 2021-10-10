@@ -1,20 +1,19 @@
-package com.example.jetpackcomponentsapp;
+package com.mzitow.foodsandcosmeticjungle.view;
 
 import android.app.Application;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-
-import com.example.jetpackcomponentsapp.model.CustomModel;
-import com.example.jetpackcomponentsapp.repository.CustomRepository;
+import com.mzitow.foodsandcosmeticjungle.model.CustomModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainViewModel extends AndroidViewModel {
 
-    private CustomRepository customRepository;
+ //   private CustomRepository customRepository;
     MutableLiveData<List<CustomModel>> liveList;
     MutableLiveData<CustomModel> liveUpdate;
 

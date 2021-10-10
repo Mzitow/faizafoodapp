@@ -7,7 +7,7 @@
     <data class="CustomBinder">
         <variable
             name="customModel"
-            type="com.example.jetpackcomponentsapp.model.CustomModel" />
+            type="com.mzitow.foodsandcosmeticjungle.model.CustomModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -142,18 +142,28 @@
                     android:id="@+id/text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@={customModel.name}"
+                    android:text="Product Name"
                     tools:text="[Name]"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="@id/constraint_guideline_lead_quarter_vertical"
                     app:layout_constraintEnd_toEndOf="@id/constraint_guideline_trail_quarter_vertical"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
+                <TextView
+                    android:id="@+id/text_view_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Name"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/constraint_guideline_trail_quarter_vertical"
+                    app:layout_constraintStart_toStartOf="@+id/constraint_guideline_lead_quarter_vertical"
+                    tools:text="[Name]" />
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_edit"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:text="Edit"
+                    android:text="Accept"
                     android:textAllCaps="false"
                     android:maxLines="1"
                     app:autoSizeTextType="uniform"
@@ -169,7 +179,7 @@
                     android:id="@+id/button_delete"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:text="Delete"
+                    android:text="Decline"
                     android:textAllCaps="false"
                     android:maxLines="1"
                     app:autoSizeTextType="uniform"

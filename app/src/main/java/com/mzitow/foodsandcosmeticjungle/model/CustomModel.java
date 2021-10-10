@@ -1,6 +1,7 @@
-package com.example.jetpackcomponentsapp.model;
+package com.mzitow.foodsandcosmeticjungle.model;
 
-import com.example.jetpackcomponentsapp.R;
+
+import com.mzitow.foodsandcosmeticjungle.R;
 
 public class CustomModel {
 
@@ -14,7 +15,7 @@ public class CustomModel {
         this.icon = R.drawable.ic_launcher_foreground;
     }
 
-    public CustomModel(int id,String name) {
+    public CustomModel(int id, String name) {
         this.id = id;
         this.name = name;
         this.icon = R.drawable.ic_launcher_foreground;

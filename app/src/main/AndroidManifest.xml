@@ -16,7 +16,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodsAndCosmeticJungle">
-        <activity android:name=".ProductHistory"></activity>
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+
+            </intent-filter>
+
+
+
+        </activity>
+        <activity android:name=".ProductCosmeticDiscription" />
+        <activity android:name=".PlaceYourOrder" />
+        <activity android:name=".CustomerFoodCatergory" />
+        <activity android:name=".ProductHistory" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".ProducerOrder" />
         <activity android:name=".ProducerCategory" />
@@ -32,13 +47,7 @@
         <activity android:name=".DeliveryLogin" />
         <activity android:name=".ProducerLogin" />
         <activity android:name=".CustomerLogin" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

@@ -1,15 +1,18 @@
 package com.mzitow.foodsandcosmeticjungle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.mzitow.foodsandcosmeticjungle.database.UserDao;
+import com.mzitow.foodsandcosmeticjungle.database.UserDatabase;
+import com.mzitow.foodsandcosmeticjungle.database.UserEntity;
 
 public class ConsumerSignUp extends AppCompatActivity {
     EditText email, username,password,phone;
@@ -21,6 +24,9 @@ public class ConsumerSignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consumer_sign_up);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Consumer Sign up");
 
 
 
@@ -51,8 +57,8 @@ public class ConsumerSignUp extends AppCompatActivity {
                         @Override
                         public void run() {
                              userDao.registerUser(userEntity);
-                            Toast toast = Toast.makeText(ConsumerSignUp.this, "User Register successful", Toast.LENGTH_SHORT);
-                            toast.show();
+                          //  Toast toast = Toast.makeText(ConsumerSignUp.this, "User Register successful", Toast.LENGTH_SHORT);
+                          //  toast.show();
                             Intent intent = new Intent(getApplicationContext(), CustomerLogin.class);
                             startActivity(intent);
 

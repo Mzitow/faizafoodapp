@@ -1,4 +1,4 @@
-package com.mzitow.foodsandcosmeticjungle;
+package com.mzitow.foodsandcosmeticjungle.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -19,6 +19,12 @@ public class UserEntity {
     @ColumnInfo(name = "email")
     String email;
 
+    @ColumnInfo(name = "phone")
+    String phone;
+
+    @ColumnInfo(name = "name")
+    String name;
+
     public String getEmail() {
         return email;
     }
@@ -35,13 +41,7 @@ public class UserEntity {
         this.phone = phone;
     }
 
-    @ColumnInfo(name = "phone")
-    String phone;
 
-
-
-    @ColumnInfo(name = "name")
-    String name;
 
     public Integer getId() {
         return id;

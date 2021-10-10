@@ -1,5 +1,6 @@
 package com.mzitow.foodsandcosmeticjungle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mzitow.foodsandcosmeticjungle.database.UserDao;
+import com.mzitow.foodsandcosmeticjungle.database.UserDatabase;
+import com.mzitow.foodsandcosmeticjungle.database.UserEntity;
 
 public class ProducerLogin extends AppCompatActivity {
 
@@ -20,6 +25,9 @@ public class ProducerLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producer_login);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Producer Login");
 
         login = findViewById(R.id.button_producersignin);
         producerlogName = findViewById(R.id.et_producerlogusername);
@@ -54,13 +62,13 @@ public class ProducerLogin extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(), "fill all the fields", Toast.LENGTH_SHORT);
                     toast.show();
                 }else {
-                   UserDatabase producerDatabase = UserDatabase.getUserDatabase(getApplicationContext());
-                 UserDao producerDao = producerDatabase.userDao();
+                   UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+                 UserDao userDao = userDatabase.userDao();
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
 //                            UserEntity userEntity = userDao.login(user,pass);
-                           UserEntity producerEntity = producerDao.login(user, pass);
+                           UserEntity producerEntity = userDao.login(user, pass);
                             if (producerEntity == null){
                                 runOnUiThread(new Runnable() {
                                     @Override

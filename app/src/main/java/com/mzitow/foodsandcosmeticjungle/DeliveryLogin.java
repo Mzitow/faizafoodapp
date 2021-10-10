@@ -1,5 +1,6 @@
 package com.mzitow.foodsandcosmeticjungle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mzitow.foodsandcosmeticjungle.database.UserDao;
+import com.mzitow.foodsandcosmeticjungle.database.UserDatabase;
+import com.mzitow.foodsandcosmeticjungle.database.UserEntity;
 
 public class DeliveryLogin extends AppCompatActivity {
 
@@ -21,12 +26,14 @@ public class DeliveryLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_login);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Delivery Login");
 
         login =  findViewById(R.id.button_deliverysignin);
 
         deliusername = findViewById(R.id.et_delilogusername);
         delipassweord = findViewById(R.id.et_delilogpassword);
-        tittle = findViewById(R.id.delivery_title);
+       // tittle = findViewById(R.id.delivery_title);
         deliverysignupPage = findViewById(R.id.delivery_sign_up_page);
 
         deliverysignupPage.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +79,7 @@ public class DeliveryLogin extends AppCompatActivity {
                                 });
 
                             } else {
-                                String titleName = userEntity.name;
+                               // String titleName = userEntity.name;
                                 Intent intent = new Intent(getApplicationContext(), DeliveryDashboard.class);
                                 startActivity(intent);
 
