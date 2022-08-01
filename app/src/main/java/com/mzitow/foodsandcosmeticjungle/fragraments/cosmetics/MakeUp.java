@@ -12,13 +12,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mzitow.foodsandcosmeticjungle.R;
 import com.mzitow.foodsandcosmeticjungle.adabters.AddProductAdapter;
 import com.mzitow.foodsandcosmeticjungle.adabters.WhatsNewAdapter;
 import com.mzitow.foodsandcosmeticjungle.database.ProductEntity;
 import com.mzitow.foodsandcosmeticjungle.database.UserDatabase;
 import com.mzitow.foodsandcosmeticjungle.database.WhatsNewEntity;
+import com.mzitow.foodsandcosmeticjungle.model.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +35,9 @@ import java.util.List;
  */
 public class MakeUp extends Fragment {
     RecyclerView makeuprecyclerView, whatsNewCategory;
+
+    ArrayList<Model> list;
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("images");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -89,8 +99,26 @@ public class MakeUp extends Fragment {
         List<ProductEntity> productEntities =   userDatabase.productsDao().getAllProductsList();
         makeuprecyclerView = view.findViewById(R.id.my_MakeUprecycler);
         makeuprecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        AddProductAdapter addProductAdapter = new AddProductAdapter(productEntities,getContext());
+        AddProductAdapter addProductAdapter = new AddProductAdapter(productEntities,getContext(),list);
         makeuprecyclerView.setAdapter(addProductAdapter);
+
+        root.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Model model = dataSnapshot.getValue(Model.class);
+                    list.add(model);
+                }
+                addProductAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+
+        });
 
 
     }

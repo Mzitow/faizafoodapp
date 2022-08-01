@@ -1,5 +1,6 @@
 package com.mzitow.foodsandcosmeticjungle.adabters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -47,7 +48,7 @@ public class DeliveryCartAdapter extends RecyclerView.Adapter<DeliveryCartAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.productDeliveryName.setText(deliveryDataEntities.get(position).getName());
         holder.productDeliveryLocation.setText(deliveryDataEntities.get(position).getLocation());

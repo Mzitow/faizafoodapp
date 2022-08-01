@@ -27,7 +27,7 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<WhatsNewAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.product_card,parent,false);
+                .inflate(R.layout.new_product_card_view,parent,false);
 
 
         return new ViewHolder(view);
@@ -53,9 +53,9 @@ public class WhatsNewAdapter extends RecyclerView.Adapter<WhatsNewAdapter.ViewHo
         public Button accept,decline;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            productName = itemView.findViewById(R.id.product_item_name);
-            productDescription = itemView.findViewById(R.id.item_short_desc);
-            productPrice = itemView.findViewById(R.id.product_item_price);
+            productName = itemView.findViewById(R.id.txtProductName);
+            productDescription = itemView.findViewById(R.id.txtProductDiscription);
+            productPrice = itemView.findViewById(R.id.txtProductPrice);
 
 
 

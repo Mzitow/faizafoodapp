@@ -14,20 +14,32 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mzitow.foodsandcosmeticjungle.ProductCosmeticDiscription;
 import com.mzitow.foodsandcosmeticjungle.ProductDiscription;
 import com.mzitow.foodsandcosmeticjungle.R;
 import com.mzitow.foodsandcosmeticjungle.database.ProductEntity;
+import com.mzitow.foodsandcosmeticjungle.model.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddProductAdapter extends RecyclerView.Adapter<AddProductAdapter.ViewHolder> {
     List<ProductEntity> productsList;
     Context cont;
 
-    public AddProductAdapter(List<ProductEntity> productsList, Context cons) {
+    private ArrayList<Model> mList;
+
+   // private DatabaseReference root = FirebaseDatabase.getInstance().getReference("Image");
+
+
+
+    public AddProductAdapter(List<ProductEntity> productsList, Context cons , ArrayList<Model> mlist) {
         this.productsList = productsList;
         this.cont = cons;
+        this.mList=mlist;
 
 
     }
@@ -47,6 +59,8 @@ public class AddProductAdapter extends RecyclerView.Adapter<AddProductAdapter.Vi
         holder.productName.setText(productsList.get(position).getProductName());
         holder.productDescription.setText(productsList.get(position).getProductDescription());
         holder.productPrice.setText(productsList.get(position).getProductPrice());
+
+        Glide.with(cont).load(mList.get(position).getImageUrl()).into(holder.imageview3);
 
         holder.detl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +89,7 @@ public class AddProductAdapter extends RecyclerView.Adapter<AddProductAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView productName, productDescription,productPrice , cosDetailProducts;
         public Button accept,decline;
-        public ImageView detl;
+        public ImageView detl, imageview3;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +97,7 @@ public class AddProductAdapter extends RecyclerView.Adapter<AddProductAdapter.Vi
             productDescription = itemView.findViewById(R.id.txtProductDiscription);
             productPrice = itemView.findViewById(R.id.txtProductPrice);
             detl = itemView.findViewById(R.id.imgmore);
+            imageview3 = itemView.findViewById(R.id.imgProductImage);
 
 
         }

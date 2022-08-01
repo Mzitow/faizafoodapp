@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.mzitow.foodsandcosmeticjungle.PlaceYourOrder;
 import com.mzitow.foodsandcosmeticjungle.ProductDiscription;
 import com.mzitow.foodsandcosmeticjungle.R;
@@ -20,7 +21,9 @@ import com.mzitow.foodsandcosmeticjungle.database.CartDao;
 import com.mzitow.foodsandcosmeticjungle.database.CartEnity;
 import com.mzitow.foodsandcosmeticjungle.database.FoodProductEntity;
 import com.mzitow.foodsandcosmeticjungle.database.UserDatabase;
+import com.mzitow.foodsandcosmeticjungle.model.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerFoodAdapter extends RecyclerView.Adapter<CustomerFoodAdapter.ViewHolder> {
@@ -29,10 +32,12 @@ public class CustomerFoodAdapter extends RecyclerView.Adapter<CustomerFoodAdapte
     public Context fcontext;
    // TextView tilte ,  dicrp, price,  checkoutAmount;
     public int count = 0;
+    private ArrayList<Model> mList;
 
-    public CustomerFoodAdapter(List<FoodProductEntity> foodProductEntities, Context c) {
+    public CustomerFoodAdapter(List<FoodProductEntity> foodProductEntities, Context c, ArrayList<Model> mlist) {
         this.foodProductEntities = foodProductEntities;
         this.fcontext = c;
+        this.mList=mlist;
     }
 
     List<FoodProductEntity> foodProductEntities;
@@ -51,6 +56,7 @@ public class CustomerFoodAdapter extends RecyclerView.Adapter<CustomerFoodAdapte
         holder.productName.setText(foodProductEntities.get(position).getProductName());
         holder.productDescription.setText(foodProductEntities.get(position).getProductDescription());
         holder.productPrice.setText(foodProductEntities.get(position).getProductPrice());
+        Glide.with(fcontext).load(mList.get(position).getImageUrl()).into(holder.imgview);
 
         holder.detailProducts.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +84,7 @@ public class CustomerFoodAdapter extends RecyclerView.Adapter<CustomerFoodAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView productName, productDescription,productPrice ,checkout, itemCount;
-        public ImageView addtocart,detailProducts;
+        public ImageView addtocart,detailProducts, imgview;
 
        // public Button accept,decline;
         public ViewHolder(@NonNull View itemView) {
@@ -90,6 +96,7 @@ public class CustomerFoodAdapter extends RecyclerView.Adapter<CustomerFoodAdapte
             addtocart = itemView.findViewById(R.id.imgCart);
             itemCount = itemView.findViewById(R.id.item_count);
             checkout = itemView.findViewById(R.id.checkout);
+            imgview = itemView.findViewById(R.id.imgProductImage);
 
 
 

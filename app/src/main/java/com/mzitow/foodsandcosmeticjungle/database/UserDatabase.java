@@ -7,7 +7,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {UserEntity.class, ProductEntity.class, CartEnity.class, FoodProductEntity.class, WhatsNewEntity.class, DeliveryDataEntity.class },  version = 4)
+@Database(entities = {UserEntity.class, ProductEntity.class, CartEnity.class, FoodProductEntity.class, WhatsNewEntity.class, DeliveryDataEntity.class, ImageEntity.class },  version = 5)
 public abstract class UserDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
@@ -16,6 +16,7 @@ public abstract class UserDatabase extends RoomDatabase {
     public abstract FoodProductDao foodProductDao();
     public abstract WhatsNewDao whatsNewDao();
     public abstract  DeliveryDao deliveryDao();
+    public  abstract ImageDao imageDao();
 
 
     private static final String dbName = "user";
