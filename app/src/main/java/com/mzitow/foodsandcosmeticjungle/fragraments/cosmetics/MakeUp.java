@@ -37,7 +37,7 @@ public class MakeUp extends Fragment {
     RecyclerView makeuprecyclerView, whatsNewCategory;
 
     ArrayList<Model> list;
-    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("uploads");
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

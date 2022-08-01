@@ -42,7 +42,7 @@ public class ConsumerCategory extends AppCompatActivity {
     WhatsNewEntity whatsNewEntity = new WhatsNewEntity();
 
     ArrayList<Model> list;
-    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("images");
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference();
 
 
 

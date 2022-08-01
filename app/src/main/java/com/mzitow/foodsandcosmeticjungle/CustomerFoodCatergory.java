@@ -42,7 +42,7 @@ public class CustomerFoodCatergory extends AppCompatActivity {
     Button button;
    WhatsNewEntity whatsNewEntity = new WhatsNewEntity();
     ArrayList<Model> list;
-    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("uploads");
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference();
 
 
 

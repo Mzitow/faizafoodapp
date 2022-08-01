@@ -86,8 +86,8 @@ public class AddProduct extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Add Products");
 
-        storage = FirebaseStorage.getInstance("uploads");
-        storageReference = storage.getReference("uploads");
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
 
 

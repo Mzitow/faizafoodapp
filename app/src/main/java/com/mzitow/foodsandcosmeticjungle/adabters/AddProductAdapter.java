@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.mzitow.foodsandcosmeticjungle.ProductCosmeticDiscription;
 import com.mzitow.foodsandcosmeticjungle.ProductDiscription;
 import com.mzitow.foodsandcosmeticjungle.R;
+import com.mzitow.foodsandcosmeticjungle.Upload;
 import com.mzitow.foodsandcosmeticjungle.database.ProductEntity;
 import com.mzitow.foodsandcosmeticjungle.model.Model;
 
@@ -31,6 +32,8 @@ public class AddProductAdapter extends RecyclerView.Adapter<AddProductAdapter.Vi
     Context cont;
 
     private ArrayList<Model> mList;
+
+
 
   // private DatabaseReference root = FirebaseDatabase.getInstance().getReference("uploads");
 
@@ -60,7 +63,11 @@ public class AddProductAdapter extends RecyclerView.Adapter<AddProductAdapter.Vi
         holder.productDescription.setText(productsList.get(position).getProductDescription());
         holder.productPrice.setText(productsList.get(position).getProductPrice());
 
+        //Upload upload = mList.get(position);
+        Model model = mList.get(position);
+
         Glide.with(cont).load(mList.get(position).getImageUrl()).into(holder.imageview3);
+       // holder.imageview3.setImageBitmap(mList.get(position));
 
         holder.detl.setOnClickListener(new View.OnClickListener() {
             @Override

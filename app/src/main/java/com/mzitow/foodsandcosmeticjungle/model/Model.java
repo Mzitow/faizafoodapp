@@ -1,6 +1,8 @@
 package com.mzitow.foodsandcosmeticjungle.model;
 
-public class Model {
+import com.mzitow.foodsandcosmeticjungle.Upload;
+
+public class Model extends Upload {
     private  String imageUrl;
 
 

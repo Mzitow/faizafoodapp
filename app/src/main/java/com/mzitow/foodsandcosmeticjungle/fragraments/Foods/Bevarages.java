@@ -37,7 +37,7 @@ public class Bevarages extends Fragment {
     RecyclerView beverages, whatsNew;
 
     ArrayList<Model> list;
-    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("uploads");
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference();
 
 
     // TODO: Rename parameter arguments, choose names that match
