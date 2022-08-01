@@ -36,7 +36,7 @@ import java.util.List;
 public class Cakes extends Fragment {
     RecyclerView cakes, whatsNew;
     ArrayList<Model> list;
-    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("images");
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("uploads");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

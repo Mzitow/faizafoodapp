@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -21,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -69,7 +71,7 @@ public class AddProduct extends AppCompatActivity {
     private Uri filePath;
 
     // request code
-    private final int PICK_IMAGE_REQUEST = 22;
+    private final int PICK_IMAGE_REQUEST = 1;
 
     // instance for firebase storage and StorageReference
     FirebaseStorage storage;
@@ -84,8 +86,8 @@ public class AddProduct extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Add Products");
 
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
+        storage = FirebaseStorage.getInstance("uploads");
+        storageReference = storage.getReference("uploads");
 
 
 
@@ -295,14 +297,13 @@ public class AddProduct extends AppCompatActivity {
                         intent,
                         "Select Image from here..."),
                 PICK_IMAGE_REQUEST);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-//            ActivityResultContracts.StartActivityForResult(
-//                    Intent.createChooser(intent,
-//                            "select Image from here...",
-//                            PICK_IMAGE_REQUEST);
-//        }
+
+
 
     }
+
+
+
 
     // Override onActivityResult method
     @SuppressLint("RestrictedApi")
@@ -344,6 +345,12 @@ public class AddProduct extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    private String getFileExtension(Uri uri) {
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
     // UploadImage method

@@ -16,6 +16,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mzitow.foodsandcosmeticjungle.adabters.AddProductAdapter;
 import com.mzitow.foodsandcosmeticjungle.adabters.CustomerFoodAdapter;
 import com.mzitow.foodsandcosmeticjungle.adabters.WhatsNewAdapter;
@@ -26,6 +31,7 @@ import com.mzitow.foodsandcosmeticjungle.database.ProductEntity;
 import com.mzitow.foodsandcosmeticjungle.database.UserDatabase;
 import com.mzitow.foodsandcosmeticjungle.database.WhatsNewDao;
 import com.mzitow.foodsandcosmeticjungle.database.WhatsNewEntity;
+import com.mzitow.foodsandcosmeticjungle.model.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +41,9 @@ public class CustomerFoodCatergory extends AppCompatActivity {
     TextView tv;
     Button button;
    WhatsNewEntity whatsNewEntity = new WhatsNewEntity();
+    ArrayList<Model> list;
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("uploads");
+
 
 
     @Override
@@ -103,8 +112,27 @@ public class CustomerFoodCatergory extends AppCompatActivity {
         UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
           List<FoodProductEntity> foodProductEntities = userDatabase.foodProductDao().getAllProductsList();
           customerfoodView.setLayoutManager(new LinearLayoutManager(this));
-          CustomerFoodAdapter customerFoodAdapter = new CustomerFoodAdapter(foodProductEntities,getApplicationContext());
+          CustomerFoodAdapter customerFoodAdapter = new CustomerFoodAdapter(foodProductEntities,getApplicationContext(),list);
           customerfoodView.setAdapter(customerFoodAdapter);
+
+        root.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Model model = dataSnapshot.getValue(Model.class);
+                    list.add(model);
+                }
+                customerFoodAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+
+        });
+
 
        // UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
         List<WhatsNewEntity> whatsNewEntities = userDatabase.whatsNewDao().getAllProductsList();

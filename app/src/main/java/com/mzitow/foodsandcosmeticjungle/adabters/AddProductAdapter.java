@@ -32,7 +32,7 @@ public class AddProductAdapter extends RecyclerView.Adapter<AddProductAdapter.Vi
 
     private ArrayList<Model> mList;
 
-   // private DatabaseReference root = FirebaseDatabase.getInstance().getReference("Image");
+  // private DatabaseReference root = FirebaseDatabase.getInstance().getReference("uploads");
 
 
 

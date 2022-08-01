@@ -40,7 +40,7 @@ public class HairCare extends Fragment {
 
 
 
-    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("images");
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("uploads");
 
 
     // TODO: Rename parameter arguments, choose names that match

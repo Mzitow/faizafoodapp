@@ -14,6 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mzitow.foodsandcosmeticjungle.MainActivity;
 import com.mzitow.foodsandcosmeticjungle.ProductCosmeticDiscription;
 import com.mzitow.foodsandcosmeticjungle.ProductHistory;
@@ -28,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeliveryInfoAdapter extends RecyclerView.Adapter<DeliveryInfoAdapter.ViewHolder> {
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("images");
 
     public  interface OnDeleteListener{
         void OnDeletelistener(ProductEntity productEntity);
@@ -70,6 +76,26 @@ public class DeliveryInfoAdapter extends RecyclerView.Adapter<DeliveryInfoAdapte
         holder.productNameHis.setText(productsList.get(position).getProductName());
         holder.productDescriptionHis.setText(productsList.get(position).getProductDescription());
         holder.productPricehis.setText(productsList.get(position).getProductPrice());
+
+
+
+        root.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Model model = dataSnapshot.getValue(Model.class);
+                   mList.add(model);
+                }
+                //addProductAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+
+        });
         Glide.with(cont).load(mList.get(position).getImageUrl()).into(holder.img);
 
         holder.detls.setOnClickListener(new View.OnClickListener() {
